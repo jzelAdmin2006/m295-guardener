@@ -11,6 +11,10 @@ class LoginController extends Controller
     {
         if (Auth::attempt($request->only(['email', 'password']))) {
             return ['plainTextToken' => $request->user()->createToken('auth_token')->plainTextToken];
+        } else {
+            return response()->json([
+                'errors' => ['general' => 'E-Mail oder Passwort falsch.']
+            ], 422);
         }
     }
 }
