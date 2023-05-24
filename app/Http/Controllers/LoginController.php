@@ -18,6 +18,14 @@ class LoginController extends Controller
         }
     }
 
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'message' => 'Logged out'
+        ]);
+    }
+
     public function checkAuth(Request $request)
     {
         return $request->user();
