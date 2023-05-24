@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/guardener'], function () {
     Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::get('/auth', [LoginController::class, 'checkAuth'])->middleware('auth:sanctum');
     Route::get('/secret', [SecretController::class, 'showSecret'])->middleware('auth:sanctum');
 });

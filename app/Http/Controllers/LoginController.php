@@ -17,4 +17,9 @@ class LoginController extends Controller
             ], 422);
         }
     }
+
+    public function checkAuth(Request $request)
+    {
+        return $request->user();
+    }
 }
